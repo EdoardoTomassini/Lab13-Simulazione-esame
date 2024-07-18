@@ -16,7 +16,7 @@ class View(ft.UserControl):
         self.ddyear = None
         self.ddshape = None
         self.btn_graph = None
-        self.txt_result = None
+        self._txt_result = None
         self.txt_container = None
 
         self.txtN = None
@@ -40,11 +40,12 @@ class View(ft.UserControl):
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
 
-        self._controller.fillDD()
+        self._controller.fillDDYear()
+        self._controller.fillDDForma()
 
         # List View where the reply is printed
-        self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
-        self._page.controls.append(self.txt_result)
+        self._txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
+        self._page.controls.append(self._txt_result)
         self._page.update()
 
         self.btn_path = ft.ElevatedButton(text="Calcola percorso", on_click=self._controller.handle_path)
